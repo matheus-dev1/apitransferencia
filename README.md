@@ -86,7 +86,7 @@ Para executar os testes unitários com o JUnit 5, use o comando
 mvn test
 ```
 
-Testes de Mutação com PIT
+## Testes de Mutação com PIT
 Para rodar os testes de mutação com o PIT, use o comando
 ```bash
 mvn pitest:mutationCoverage
