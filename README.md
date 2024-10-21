@@ -55,6 +55,8 @@ Instalar o Redis
 ```ubuntu
 sudo apt update
 sudo apt install redis-server
+sudo systemctl enable redis-server
+sudo systemctl start redis-server
 ```
 
 Iniciar o Redis
@@ -72,7 +74,7 @@ Para compilar e executar a aplicação, utilize os seguintes comandos
 
 ```ubuntu
 mvn clean install
-mvn spring-boot:run
+java -jar .\target\apitranferencia-0.0.1-SNAPSHOT.war
 ```
 
 A aplicação estará disponível em ```http://localhost:8080```
@@ -91,6 +93,7 @@ Para rodar os testes de mutação com o PIT, use o comando
 ```bash
 mvn pitest:mutationCoverage
 ```
+![PITest](./pitest-21-10-2024.png)
 
 Os relatórios de mutação estarão disponíveis no diretório ```target/pit-reports/.```
 ## Endpoints Disponíveis
@@ -124,6 +127,8 @@ Body:
 
 ## Documentação da API
 Acesse ```http://localhost:8080/swagger-ui.html``` depois de compilar o projeto.
+
+![PITest](./swagger.png)
 
 ## Estrutura do Projeto
 - ```src/main/java:``` Código da aplicação
