@@ -1,19 +1,20 @@
 
 # API de Transferências Bancárias
-
 Este projeto é uma aplicação RESTful que simula operações bancárias, como cadastro de clientes, transferência entre contas e consulta de histórico de transferências. Utiliza Spring Boot, Redis como banco de dados em memória, controle de concorrência nas transferências e implementa testes de mutação com PIT e testes unitários/integrados com JUnit 5.
-
-
 
 ## Funcionalidades
 Cadastro de Clientes
 - Endpoint para cadastrar um cliente com ID, nome, número da conta (único) e saldo inicial.
+
 Listagem de Clientes
 - Endpoint para listar todos os clientes cadastrados.
+
 Busca de Cliente por Número da Conta
 - Endpoint para buscar detalhes de um cliente utilizando o número da conta.
+
 Transferência entre Contas
 - Endpoint para realizar transferências entre duas contas, com controle de saldo e limite de R$ 10.000,00.
+
 Histórico de Transferências
 - Endpoint para consultar o histórico de transferências de uma conta, incluindo transferências bem-sucedidas e malsucedidas, ordenadas por data decrescente.
 
@@ -31,8 +32,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 - Maven 3.8+
 - Redis em execução local (WSL no Windows)
 - Git
-## Configuração e Execução
 
+## Configuração e Execução
 Clonar o Repositório
 ```bash
 git clone https://github.com/matheus-dev1/apitransferencia.git
@@ -40,7 +41,6 @@ cd apitransferencia
 ```
 
 ## Configurar o Redis
-
 O Redis não possui no windows de forma nativa, você precisa usar um WSL, então, segue os comando para baixar.
 
 Habilitar WSL
@@ -124,6 +124,7 @@ Body:
 
 ## Documentação da API
 Acesse ```http://localhost:8080/swagger-ui.html``` depois de compilar o projeto.
+
 ## Estrutura do Projeto
 - ```src/main/java:``` Código da aplicação
 - ```src/main/resources:``` Configurações de recursos (e.g., application.properties)
