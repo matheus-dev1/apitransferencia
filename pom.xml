@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>br.com.itaucase</groupId>
+	<artifactId>apitranferencia</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>apitranferencia</name>
+	<description>Api de Tranferencia Itau Case</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+
+	<properties>
+		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-devtools</artifactId>
+    	</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+	            <exclusion>
+	                <groupId>junit</groupId>
+	                <artifactId>junit</artifactId>
+	            </exclusion>
+	        </exclusions>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		    <version>2.1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+        	<groupId>com.fasterxml.jackson.core</groupId>
+        	<artifactId>jackson-databind</artifactId>
+    	</dependency>
+
+		<dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-api</artifactId>
+	        <version>5.10.0</version>
+	        <scope>test</scope>
+	    </dependency>
+	
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-engine</artifactId>
+	        <version>5.10.0</version>
+	        <scope>test</scope>
+    	</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.14.1</version>
+				<dependencies>
+				  <dependency>
+					<groupId>org.pitest</groupId>
+					<artifactId>pitest-junit5-plugin</artifactId>
+					<version>1.2.1</version>
+				  </dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>mutationCoverage</id>
+						<phase>test</phase>
+						<goals>
+							<goal>mutationCoverage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<testPlugin>junit5</testPlugin>
+					<targetClasses>
+						<param>br.com.itaucase.apitranferencia.*</param>
+						<param>br.com.itaucase.apitranferencia.config.*</param>
+						<param>br.com.itaucase.apitranferencia.dto.*</param>
+						<param>br.com.itaucase.apitranferencia.exception.*</param>
+						<param>br.com.itaucase.apitranferencia.model.*</param>
+						<param>br.com.itaucase.apitranferencia.helper.*</param>
+						<param>br.com.itaucase.apitranferencia.repository.*</param>
+						<param>br.com.itaucase.apitranferencia.service.*</param>
+						<param>br.com.itaucase.apitranferencia.controller.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>br.com.itaucase.apitranferencia.*Test</param>
+						<param>br.com.itaucase.apitranferencia.config.*Test</param>
+						<param>br.com.itaucase.apitranferencia.dto.*Test</param>
+						<param>br.com.itaucase.apitranferencia.exception.*Test</param>
+						<param>br.com.itaucase.apitranferencia.model.*Test</param>
+						<param>br.com.itaucase.apitranferencia.helper.*Test</param>
+						<param>br.com.itaucase.apitranferencia.repository.*Test</param>
+						<param>br.com.itaucase.apitranferencia.service.*Test</param>
+						<param>br.com.itaucase.apitranferencia.controller.*Test</param>
+					</targetTests>
+					<outputFormats>
+						<param>HTML</param>
+					</outputFormats>
+					<!--<mutationThreshold>90</mutationThreshold>-->
+					<jvmArgs>
+						<param>--enable-preview</param>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

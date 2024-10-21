@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "ab00943f-6c87-466a-8d7f-6d3701f15649",
+		"name": "Api Transferencia Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15749279"
+	},
+	"item": [
+		{
+			"name": "Listar Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Fabio\",\r\n    \"saldo\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por conta especifica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/clientes/numeroConta/03050564-ba58-4e71-8ef9-51ea05e4d588-conta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"numeroConta",
+						"03050564-ba58-4e71-8ef9-51ea05e4d588-conta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tranferencia de saldo entre contas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contaOrigem\": \"03050564-ba58-4e71-8ef9-51ea05e4d588-conta\",\r\n    \"contaDestino\": \"b8b40dd6-eb46-4543-93ed-2a9906803135-conta\",\r\n    \"valor\": 100000000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transferencias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transferencias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista historico de transferencias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/transferencias/b8b40dd6-eb46-4543-93ed-2a9906803135-conta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"transferencias",
+						"b8b40dd6-eb46-4543-93ed-2a9906803135-conta"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
