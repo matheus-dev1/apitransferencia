@@ -19,7 +19,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.com.itaucase.apitranferencia.helper.ClienteHelper;
+import br.com.itaucase.apitranferencia.mapper.ClienteMapper;
 import br.com.itaucase.apitranferencia.model.Cliente;
 import br.com.itaucase.apitranferencia.service.ClienteService;
 
@@ -33,7 +33,7 @@ public class ClienteControllerIntegracaoTest {
     private ClienteService clienteService;
     
     @MockBean
-    private ClienteHelper clienteHelper;
+    private ClienteMapper clienteHelper;
 
     @InjectMocks
     private ClienteController clienteController;

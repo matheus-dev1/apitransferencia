@@ -8,15 +8,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.itaucase.apitranferencia.dto.ClienteRequest;
+import br.com.itaucase.apitranferencia.mapper.ClienteMapper;
 import br.com.itaucase.apitranferencia.model.Cliente;
 
 public class ClienteHelperTest {
 
-    private ClienteHelper clienteHelper;
+    private ClienteMapper clienteMapper;
 
     @BeforeEach
     public void setUp() {
-        clienteHelper = new ClienteHelper();
+        clienteMapper = new ClienteMapper();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class ClienteHelperTest {
         request.setNome("João");
         request.setSaldo(1000.0);
 
-        Cliente cliente = clienteHelper.clienteRequestParaCliente(request);
+        Cliente cliente = clienteMapper.clienteRequestParaCliente(request);
 
         assertNotNull(cliente.getId(), "O ID do cliente não deve ser nulo");
         assertEquals("João", cliente.getNome(), "O nome do cliente está incorreto");
@@ -40,7 +41,7 @@ public class ClienteHelperTest {
         request.setNome("Maria");
         request.setSaldo(-500.0);
 
-        Cliente cliente = clienteHelper.clienteRequestParaCliente(request);
+        Cliente cliente = clienteMapper.clienteRequestParaCliente(request);
 
         assertNotNull(cliente.getId(), "O ID do cliente não deve ser nulo");
         assertEquals("Maria", cliente.getNome(), "O nome do cliente está incorreto");

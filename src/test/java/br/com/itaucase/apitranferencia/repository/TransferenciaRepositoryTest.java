@@ -19,7 +19,7 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import br.com.itaucase.apitranferencia.dto.TransferenciaRequest;
-import br.com.itaucase.apitranferencia.helper.TransferenciaHelper;
+import br.com.itaucase.apitranferencia.mapper.TransferenciaMapper;
 import br.com.itaucase.apitranferencia.model.Cliente;
 import br.com.itaucase.apitranferencia.model.Transferencia;
 import br.com.itaucase.apitranferencia.service.ClienteService;
@@ -30,7 +30,7 @@ public class TransferenciaRepositoryTest {
     private ClienteService clienteService;
 
     @Mock
-    private TransferenciaHelper transferenciaHelper;
+    private TransferenciaMapper transferenciaMapper;
 
     @Mock
     private RedisTemplate<String, Object> redisTemplate;
@@ -71,7 +71,7 @@ public class TransferenciaRepositoryTest {
 
         when(clienteService.buscarClientePorNumeroConta("12345")).thenReturn(origem);
         when(clienteService.buscarClientePorNumeroConta("54321")).thenReturn(destino);
-        when(transferenciaHelper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
+        when(transferenciaMapper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
 
         Transferencia resultado = transferenciaRepository.realizarTransferencia(transferenciaRequest);
 
@@ -107,7 +107,7 @@ public class TransferenciaRepositoryTest {
 
         when(clienteService.buscarClientePorNumeroConta("12345")).thenReturn(origem);
         when(clienteService.buscarClientePorNumeroConta("54321")).thenReturn(destino);
-        when(transferenciaHelper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
+        when(transferenciaMapper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
 
         Transferencia resultado = transferenciaRepository.realizarTransferencia(transferenciaRequest);
 
@@ -143,7 +143,7 @@ public class TransferenciaRepositoryTest {
 
         when(clienteService.buscarClientePorNumeroConta("12345")).thenReturn(origem);
         when(clienteService.buscarClientePorNumeroConta("54321")).thenReturn(destino);
-        when(transferenciaHelper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
+        when(transferenciaMapper.trenaferenciaRequestParaTransferencia(transferenciaRequest)).thenReturn(transferencia);
 
         Transferencia resultado = transferenciaRepository.realizarTransferencia(transferenciaRequest);
 

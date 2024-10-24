@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itaucase.apitranferencia.dto.ClienteRequest;
-import br.com.itaucase.apitranferencia.helper.ClienteHelper;
+import br.com.itaucase.apitranferencia.mapper.ClienteMapper;
 import br.com.itaucase.apitranferencia.model.Cliente;
 import br.com.itaucase.apitranferencia.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,14 +25,14 @@ public class ClienteController {
     private static final String CLIENTE_CADASTRADO_COM_SUCESSO = "Cliente cadastrado com sucesso.";
     
 	private final ClienteService clienteService;
-    private final ClienteHelper clienteHelper;
+    private final ClienteMapper clienteMapper;
 
     public ClienteController(
     		ClienteService clienteService,
-    		ClienteHelper clienteHelper
+    		ClienteMapper clienteHelper
     	) {
         	this.clienteService = clienteService;
-        	this.clienteHelper = clienteHelper;
+        	this.clienteMapper = clienteHelper;
     }
 
     @Operation(summary = "Cadastrar um cliente")
@@ -41,7 +41,7 @@ public class ClienteController {
         })
     @PostMapping
     public ResponseEntity<String> cadastrarCliente(@RequestBody ClienteRequest request) {
-        Cliente cliente = clienteHelper.clienteRequestParaCliente(request);
+        Cliente cliente = clienteMapper.clienteRequestParaCliente(request);
         clienteService.cadastrarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(CLIENTE_CADASTRADO_COM_SUCESSO);
     }

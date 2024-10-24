@@ -8,15 +8,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.itaucase.apitranferencia.dto.TransferenciaRequest;
+import br.com.itaucase.apitranferencia.mapper.TransferenciaMapper;
 import br.com.itaucase.apitranferencia.model.Transferencia;
 
 public class TransferenciaHelperTest {
 
-    private TransferenciaHelper transferenciaHelper;
+    private TransferenciaMapper transferenciaMapper;
 
     @BeforeEach
     public void setUp() {
-        transferenciaHelper = new TransferenciaHelper();
+        transferenciaMapper = new TransferenciaMapper();
     }
 
     @Test
@@ -26,7 +27,7 @@ public class TransferenciaHelperTest {
         request.setContaDestino("654321");
         request.setValor(200.0);
 
-        Transferencia transferencia = transferenciaHelper.trenaferenciaRequestParaTransferencia(request);
+        Transferencia transferencia = transferenciaMapper.trenaferenciaRequestParaTransferencia(request);
 
         assertNotNull(transferencia.getId(), "O ID da transferência não deve ser nulo");
         assertEquals("123456", transferencia.getContaOrigem(), "A conta de origem está incorreta");
@@ -43,7 +44,7 @@ public class TransferenciaHelperTest {
         request.setContaDestino("654321");
         request.setValor(0.0);
 
-        Transferencia transferencia = transferenciaHelper.trenaferenciaRequestParaTransferencia(request);
+        Transferencia transferencia = transferenciaMapper.trenaferenciaRequestParaTransferencia(request);
 
         assertNotNull(transferencia.getId(), "O ID da transferência não deve ser nulo");
         assertEquals(0.0, transferencia.getValor(), "O valor da transferência deve ser zero");

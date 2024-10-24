@@ -1,4 +1,4 @@
-package br.com.itaucase.apitranferencia.helper;
+package br.com.itaucase.apitranferencia.mapper;
 
 import java.util.UUID;
 
@@ -8,7 +8,7 @@ import br.com.itaucase.apitranferencia.dto.ClienteRequest;
 import br.com.itaucase.apitranferencia.model.Cliente;
 
 @Component
-public class ClienteHelper {
+public class ClienteMapper {
 	
 	public Cliente clienteRequestParaCliente(ClienteRequest request) {
         Cliente cliente = new Cliente();

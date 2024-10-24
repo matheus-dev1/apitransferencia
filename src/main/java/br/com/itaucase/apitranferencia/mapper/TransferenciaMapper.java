@@ -1,4 +1,4 @@
-package br.com.itaucase.apitranferencia.helper;
+package br.com.itaucase.apitranferencia.mapper;
 
 import br.com.itaucase.apitranferencia.dto.TransferenciaRequest;
 import br.com.itaucase.apitranferencia.model.Transferencia;
@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Component
-public class TransferenciaHelper {
+public class TransferenciaMapper {
 
 	public Transferencia trenaferenciaRequestParaTransferencia(TransferenciaRequest transferenciaRequest) {
 	    Transferencia transferencia = new Transferencia();

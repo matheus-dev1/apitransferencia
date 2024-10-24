@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.itaucase.apitranferencia.dto.TransferenciaRequest;
-import br.com.itaucase.apitranferencia.helper.TransferenciaHelper;
+import br.com.itaucase.apitranferencia.mapper.TransferenciaMapper;
 import br.com.itaucase.apitranferencia.model.Cliente;
 import br.com.itaucase.apitranferencia.model.Transferencia;
 import br.com.itaucase.apitranferencia.service.ClienteService;
@@ -18,16 +18,16 @@ public class TransferenciaRepository {
     private static final String REDIS_KEY_TRANSFERENCIA = "Transferencia";
     
     private ClienteService clienteService;
-    private TransferenciaHelper transferenciaHelper;
+    private TransferenciaMapper transferenciaMapper;
     private final RedisTemplate<String, Object> redisTemplate;
 
     public TransferenciaRepository(
     		ClienteService clienteService, 
-    		TransferenciaHelper transferenciaHelper,
+    		TransferenciaMapper TransferenciaMapper,
     		RedisTemplate<String, Object> redisTemplate
     	) {
     	this.clienteService = clienteService;
-    	this.transferenciaHelper = transferenciaHelper;
+    	this.transferenciaMapper = TransferenciaMapper;
         this.redisTemplate = redisTemplate;
     }
 
@@ -38,7 +38,7 @@ public class TransferenciaRepository {
         Cliente destino = clienteService.buscarClientePorNumeroConta(transferenciaRequest.getContaDestino());
         Double valor = transferenciaRequest.getValor();
 
-        Transferencia transferencia = transferenciaHelper.trenaferenciaRequestParaTransferencia(transferenciaRequest);
+        Transferencia transferencia = transferenciaMapper.trenaferenciaRequestParaTransferencia(transferenciaRequest);
 
         if (origem.getSaldo() >= valor && valor <= 10000) {
             origem.setSaldo(origem.getSaldo() - valor);
